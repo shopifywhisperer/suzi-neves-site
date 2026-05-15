@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suzi Neves — Shopify Specialist</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=DM+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #F9FAF4;
+      --teal: #4A6163;
+      --orange: #F9A66C;
+      --yellow: #FFC94B;
+      --rose: #F17A7E;
+      --muted: #5F7476;
+      --line: rgba(74, 97, 99, 0.2);
+      --soft-line: rgba(249, 250, 244, 0.28);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      width: 100%;
+      background: var(--cream);
+      font-family: "IBM Plex Sans", sans-serif;
+      color: var(--teal);
+      overflow-x: hidden;
+      font-weight: 400;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    nav a,
+    .kicker,
+    .scope-label,
+    .work-item span,
+    .price,
+    .cta,
+    .email-button,
+    .name,
+    .specialist,
+    footer {
+      font-family: "DM Mono", monospace;
+    }
+
+    .hero,
+    .panel {
+      min-height: 100svh;
+    }
+
+    .hero-inner {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(270px, 25vw) 1fr;
+    }
+
+    .left-col {
+      background: var(--teal);
+      padding: clamp(44px, 5vw, 72px) clamp(32px, 3.5vw, 48px);
+    }
+
+    .name-block {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .name {
+      font-size: clamp(14px, 1vw, 17px);
+      font-weight: 700;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+
+    .specialist {
+      font-size: clamp(11px, 0.8vw, 13px);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .accent-line {
+      width: 34px;
+      height: 2px;
+      background: var(--yellow);
+      margin-top: 24px;
+    }
+
+    .right-col {
+      background: var(--cream);
+      padding: clamp(42px, 5vw, 72px) clamp(52px, 6vw, 92px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-row {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    nav {
+      display: flex;
+      gap: clamp(24px, 3vw, 42px);
+    }
+
+    nav a {
+      font-size: clamp(11px, 0.86vw, 13px);
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--teal);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      color: var(--rose);
+    }
+
+    .right-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--line);
+      margin-top: clamp(42px, 6vh, 68px);
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: clamp(48px, 7vw, 120px);
+      transform: translateY(-2vh);
+    }
+
+    .headline {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(58px, 5.7vw, 92px);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      color: var(--teal);
+      max-width: 850px;
+    }
+
+    .headline em {
+      font-style: italic;
+      color: var(--rose);
+      font-weight: 500;
+    }
+
+    .subtext {
+      max-width: 720px;
+      font-size: clamp(15px, 1.05vw, 18px);
+      line-height: 1.75;
+      color: var(--muted);
+      margin-top: 32px;
+      font-weight: 500;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      width: fit-content;
+      margin-top: 36px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid var(--yellow);
+      font-size: clamp(13px, 0.95vw, 15px);
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    .cta span {
+      color: var(--rose);
+      font-size: 1.15em;
+    }
+
+    .panel {
+      display: flex;
+      align-items: center;
+      padding: clamp(54px, 6vw, 82px) clamp(28px, 6vw, 92px);
+    }
+
+    .panel-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .kicker {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 18px;
+    }
+
+    .title {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(42px, 5vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      font-weight: 600;
+      color: var(--teal);
+      max-width: 900px;
+    }
+
+    .short-copy {
+      max-width: 760px;
+      margin-top: 22px;
+      font-size: clamp(15px, 1vw, 18px);
+      line-height: 1.65;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .services {
+      background: var(--cream);
+      color: var(--teal);
+      border-top: 1px solid var(--line);
+    }
+
+    .services-layout {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: clamp(32px, 5vw, 72px);
+      align-items: center;
+      margin-top: 42px;
+    }
+
+    .scope-card {
+      background: var(--teal);
+      color: var(--cream);
+      padding: clamp(28px, 4vw, 42px);
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .scope-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 24px;
+    }
+
+    .scope-card p {
+      font-size: clamp(16px, 1.3vw, 20px);
+      line-height: 1.55;
+      font-weight: 400;
+      color: rgba(249, 250, 244, 0.86);
+      max-width: 470px;
+    }
+
+    .work-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 18px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: clamp(15px, 1.05vw, 18px);
+      line-height: 1.35;
+      font-weight: 400;
+      color: var(--teal);
+    }
+
+    .work-item span {
+      color: var(--rose);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    .pricing {
+      background: var(--teal);
+      color: var(--cream);
+    }
+
+    .pricing .kicker {
+      color: var(--yellow);
+    }
+
+    .pricing .title {
+      color: var(--cream);
+    }
+
+    .pricing .short-copy {
+      color: rgba(249, 250, 244, 0.78);
+    }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 42px;
+    }
+
+    .price-card {
+      min-height: 255px;
+      padding: 30px;
+      border: 1px solid rgba(249, 250, 244, 0.4);
+      background: var(--cream);
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      align-items: start;
+    }
+
+    .price-card:nth-child(1) {
+      border-top: 4px solid var(--yellow);
+    }
+
+    .price-card:nth-child(2) {
+      border-top: 4px solid var(--orange);
+    }
+
+    .price-card:nth-child(3) {
+      border-top: 4px solid var(--rose);
+    }
+
+    .price-card:nth-child(4) {
+      border-top: 4px solid var(--yellow);
+    }
+
+    .price-card h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(30px, 2.6vw, 42px);
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    .price {
+      margin-top: 10px;
+      margin-bottom: 28px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--rose);
+    }
+
+    .price-card p {
+      font-size: 14px;
+      line-height: 1.6;
+      font-weight: 400;
+      color: var(--muted);
+      max-width: 92%;
+      align-self: end;
+    }
+
+    .note {
+      margin-top: 24px;
+      font-size: 13px;
+      line-height: 1.6;
+      font-weight: 400;
+      color: rgba(249, 250, 244, 0.78);
+    }
+
+    .fit {
+      background: var(--cream);
+      border-top: 1px solid var(--line);
+    }
+
+    .fit-layout {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(34px, 6vw, 86px);
+      align-items: center;
+    }
+
+    .fit .title {
+      max-width: 760px;
+    }
+
+    .fit-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .fit-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 18px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: clamp(15px, 1vw, 18px);
+      line-height: 1.45;
+      font-weight: 400;
+      color: var(--teal);
+    }
+
+    .fit-item span {
+      color: var(--rose);
+      font-family: "DM Mono", monospace;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    .contact {
+      background: var(--teal);
+      color: var(--cream);
+    }
+
+    .contact .panel-inner {
+      max-width: 1040px;
+    }
+
+    .contact .kicker {
+      color: var(--yellow);
+    }
+
+    .contact .title {
+      color: var(--cream);
+      max-width: 780px;
+    }
+
+    .contact .short-copy {
+      color: rgba(249, 250, 244, 0.78);
+      max-width: 640px;
+    }
+
+    .email-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      background: var(--rose);
+      color: var(--cream);
+      text-decoration: none;
+      padding: 18px 24px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: 34px;
+    }
+
+    .email-button:hover {
+      background: var(--orange);
+    }
+
+    footer {
+      background: var(--teal);
+      color: rgba(249, 250, 244, 0.68);
+      border-top: 1px solid var(--soft-line);
+      padding: 22px clamp(24px, 6vw, 92px);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    @media (max-width: 1050px) {
+      .services-layout,
+      .fit-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .price-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .scope-card,
+      .price-card {
+        min-height: auto;
+      }
+
+      .panel {
+        min-height: auto;
+        padding-top: 72px;
+        padding-bottom: 72px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .left-col {
+        padding: 28px 26px;
+      }
+
+      .right-col {
+        padding: 28px 26px 46px;
+      }
+
+      .top-row {
+        justify-content: flex-start;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      nav a {
+        font-size: 11px;
+      }
+
+      .right-rule {
+        margin-top: 28px;
+      }
+
+      .main {
+        padding: 68px 0 32px;
+        transform: none;
+      }
+
+      .headline {
+        font-size: clamp(45px, 13vw, 70px);
+      }
+
+      .subtext {
+        font-size: 15px;
+      }
+
+      .work-item,
+      .fit-item {
+        grid-template-columns: 36px 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-inner">
+      <aside class="left-col">
+        <div class="name-block">
+          <div class="name">Suzi Neves</div>
+          <div class="specialist">Shopify Specialist</div>
+          <div class="accent-line"></div>
+        </div>
+      </aside>
+
+      <main class="right-col">
+        <div class="top-row">
+          <nav>
+            <a href="#services">Services</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#fit">Best Fit</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </div>
+
+        <div class="right-rule"></div>
+
+        <div class="main">
+          <h1 class="headline">
+            Retail systems<br>
+            without <em>the chaos.</em>
+          </h1>
+
+          <p class="subtext">
+            Shopify, point of sale, inventory, product setup, and the backend systems that keep a growing retail business moving.
+          </p>
+
+          <a href="#services" class="cta">
+            Start here <span>→</span>
+          </a>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <section class="panel services" id="services">
+    <div class="panel-inner">
+      <div class="kicker">Services</div>
+
+      <h2 class="title">
+        Shopify setup, cleanup, POS, and backend support.
+      </h2>
+
+      <p class="short-copy">
+        Clear systems for the parts of Shopify that keep the business moving.
+      </p>
+
+      <div class="services-layout">
+        <div class="scope-card">
+          <div class="scope-label">Scope</div>
+          <p>
+            Backend work that connects products, inventory, staff, orders, and customers.
+          </p>
+        </div>
+
+        <div class="work-list">
+          <div class="work-item">
+            <span>01</span>
+            <div>Product setup, variants, descriptions, images, tags, and collections</div>
+          </div>
+
+          <div class="work-item">
+            <span>02</span>
+            <div>SKUs, barcodes, product organization, and catalog cleanup</div>
+          </div>
+
+          <div class="work-item">
+            <span>03</span>
+            <div>Inventory locations, tracking settings, stock cleanup, and transfers</div>
+          </div>
+
+          <div class="work-item">
+            <span>04</span>
+            <div>Shopify Point of Sale implementation, barcode scanning, receipts, and staff flow</div>
+          </div>
+
+          <div class="work-item">
+            <span>05</span>
+            <div>Wholesale, draft orders, deposits, discounts, and preorder workflows</div>
+          </div>
+
+          <div class="work-item">
+            <span>06</span>
+            <div>Apps, reporting, workflow fixes, and ongoing backend support</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel pricing" id="pricing">
+    <div class="panel-inner">
+      <div class="kicker">Pricing</div>
+
+      <h2 class="title">
+        Simple ways to start.
+      </h2>
+
+      <p class="short-copy">
+        Clear starting points, with room for the details.
+      </p>
+
+      <div class="price-grid">
+        <article class="price-card">
+          <h3>Systems Review</h3>
+          <div class="price">Starting at $750</div>
+          <p>A focused look at what is working, what needs attention, and what to fix first.</p>
+        </article>
+
+        <article class="price-card">
+          <h3>Project Work</h3>
+          <div class="price">Starting at $1,000</div>
+          <p>Setup, cleanup, catalog, app, wholesale, or workflow projects with a defined scope.</p>
+        </article>
+
+        <article class="price-card">
+          <h3>Ongoing Support</h3>
+          <div class="price">Starting at $500/month</div>
+          <p>Steady backend support for businesses that need someone inside the system.</p>
+        </article>
+
+        <article class="price-card">
+          <h3>POS Implementation</h3>
+          <div class="price">Starting at $5,000</div>
+          <p>Full Shopify Point of Sale implementation, including setup, inventory flow, barcode scanning, register workflow, staff training, launch documentation, and go-live support.</p>
+        </article>
+      </div>
+
+      <p class="note">
+        Final pricing depends on scope, timing, and what needs to be untangled.
+      </p>
+    </div>
+  </section>
+
+  <section class="panel fit" id="fit">
+    <div class="panel-inner fit-layout">
+      <div>
+        <div class="kicker">Best Fit</div>
+
+        <h2 class="title">
+          For stores with a lot of moving parts.
+        </h2>
+
+        <p class="short-copy">
+          Online sales, in-person sales, inventory, products, apps, and workflows that need to stay connected.
+        </p>
+      </div>
+
+      <div class="fit-list">
+        <div class="fit-item">
+          <span>01</span>
+          <div>You sell online, in person, or both.</div>
+        </div>
+
+        <div class="fit-item">
+          <span>02</span>
+          <div>Your product setup needs structure.</div>
+        </div>
+
+        <div class="fit-item">
+          <span>03</span>
+          <div>Inventory is taking too much time.</div>
+        </div>
+
+        <div class="fit-item">
+          <span>04</span>
+          <div>Your apps, orders, or workflows need to connect better.</div>
+        </div>
+
+        <div class="fit-item">
+          <span>05</span>
+          <div>You need someone who understands the business, not just the buttons.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel contact" id="contact">
+    <div class="panel-inner">
+      <div class="kicker">Contact</div>
+
+      <h2 class="title">
+        Let’s make the backend feel less feral.
+      </h2>
+
+      <p class="short-copy">
+        Tell me what’s going on, what needs to work better, or where Shopify is slowing things down.
+      </p>
+
+      <a class="email-button" href="mailto:suzi@radpurpose.com">
+        Email Suzi
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>Suzi Neves</div>
+      <div>Shopify Specialist</div>
+    </div>
+  </footer>
+</body>
+</html>
